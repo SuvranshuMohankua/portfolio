@@ -1,0 +1,137 @@
+{
+    "name": "Suvranshu Mohankuda",
+    "title": "Full Stack Developer",
+    "summary": "Passionate Full-Stack Developer currently pursuing B.Tech in CSE at Lovely Professional University. Experienced in MERN stack development, C++, and building energy-efficient scheduling models.",
+    "profileImage": "",
+    "skills": [
+        "C++",
+        "JavaScript",
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "MySQL",
+        "PHP",
+        "C",
+        "Bootstrap",
+        "Git/GitHub"
+    ],
+    "projects": [
+        {
+            "id": 1,
+            "title": "MyFit - Online Fitness Platform",
+            "description": "Online fitness training and session-booking platform with personalized workouts and goal-based recommendations. Interactive booking and trainer availability management.",
+            "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1000&q=80",
+            "github": "https://github.com/SuvranshuMohankuda",
+            "live": "",
+            "tech": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "React",
+                "MongoDB",
+                "PHP"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "GreenCPU - Scheduling Model",
+            "description": "Energy-efficient CPU scheduling simulation platform with real-time graphs and Gantt charts to visualize power consumption and efficiency.",
+            "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=80",
+            "github": "https://github.com/SuvranshuMohankuda",
+            "live": "",
+            "tech": [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "LuxBid - Online Bidding Platform",
+            "description": "A secure and real-time online bidding platform built with the MERN stack. Features live auction tracking, dynamic increments, and user-friendly bidding dashboards.",
+            "image": "/images/luxbid.png",
+            "github": "https://github.com/SuvranshuMohankuda",
+            "live": "https://onlineliveauctionsite.netlify.app",
+            "tech": [
+                "MERN",
+                "Socket.io",
+                "Node.js",
+                "Express.js",
+                "MongoDB",
+                "React"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "B.Tech in Computer Science and Engineering",
+            "institution": "Lovely Professional University",
+            "year": "2023 - Present",
+            "details": "CGPA: 7.8"
+        },
+        {
+            "degree": "Intermediate (HS)",
+            "institution": "Army Public School",
+            "year": "2021 - 2022",
+            "details": "Percentage: 90%"
+        },
+        {
+            "degree": "Matriculation",
+            "institution": "Army Public School",
+            "year": "2019 - 2020",
+            "details": "Percentage: 95%"
+        }
+    ],
+    "experience": [
+        {
+            "role": "Web Developer Intern",
+            "company": "InternElite",
+            "duration": "Oct 2023",
+            "description": "Completed industrial training in MERN stack development. Designed and deployed full-stack applications with responsive React interfaces and API integration."
+        }
+    ],
+    "certificates": [
+        {
+            "id": 1,
+            "title": "HackWithVertos 1.0 - 24 Hour Hackathon",
+            "institution": "ECHO (LPU)",
+            "year": "2024",
+            "image": "/images/Gemini_Generated_Image_6rhi5g6rhi5g6rhi.png"
+        },
+        {
+            "id": 2,
+            "title": "Mastering C++: From OOP to Dynamic Programming",
+            "institution": "LPU CE",
+            "year": "2025",
+            "image": "/images/Screenshot (121).png"
+        },
+        {
+            "id": 3,
+            "title": "Computational Theory: Language Principle & Finite Automata Theory",
+            "institution": "Infosys Springboard",
+            "year": "2025",
+            "image": "/images/Screenshot (124).png"
+        },
+        {
+            "id": 4,
+            "title": "Machine Learning by Stanford",
+            "institution": "Cursa",
+            "year": "2024",
+            "image": "/images/Screenshot (125).png"
+        },
+        {
+            "id": 5,
+            "title": "The Complete Leadership Mastery Course",
+            "institution": "Udemy",
+            "year": "2023",
+            "image": "/images/Screenshot (126).png"
+        }
+    ],
+    "contact": {
+        "email": "suvranshumohankuda@gmail.com",
+        "phone": "+91-7439952817",
+        "linkedin": "https://www.linkedin.com/in/suvranshu-mohankuda-328822297/",
+        "github": "https://github.com/SuvranshuMohankuda"
+    }
+}

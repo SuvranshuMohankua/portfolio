@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@100..900&display=swap');
+
+:root {
+  /* Restored Dark Matte Porto-Inspired Theme */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-glass: rgba(10, 10, 10, 0.85);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+
+  /* Specific Palette Request */
+  --accent-papaya: #FF3F21;
+  --silver: #C0C0C0;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Underlying Layer Request */
+  --bg-underlying: #fffee3;
+  /* The Cream Background */
+
+  /* Functional Accents */
+  --accent: var(--accent-papaya);
+  --border: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glow: rgba(255, 63, 33, 0.15);
+
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Outfit', sans-serif;
+
+  --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* Modern Sizing */
+  --fs-base: 18px;
+  --fs-h1: clamp(4rem, 15vw, 14rem);
+  --fs-h2: clamp(2.5rem, 8vw, 6rem);
+  --fs-body: 1.25rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg-primary);
+  font-size: var(--fs-base);
+}
+
+body {
+  font-family: var(--font-body);
+  /* The "Main" background behind the 3D objects as requested */
+  background: var(--bg-underlying);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+section {
+  background: var(--bg-primary);
+  position: relative;
+  z-index: 1;
+}
+
+#hero {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-papaya);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  text-transform: lowercase;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+p {
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  max-width: 45ch;
+  font-weight: 300;
+}
+
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+/* Porto Layout Elements */
+.section-heading {
+  font-size: var(--fs-h1);
+  line-height: 0.85;
+  margin-bottom: 6rem;
+  color: var(--text-primary);
+}
+
+.accent-text-papaya {
+  color: var(--accent-papaya) !important;
+}
+
+.bg-black {
+  background-color: var(--black) !important;
+}
+
+/* Footer Visibility Bar */
+footer {
+  background: var(--black) !important;
+  position: relative;
+  z-index: 10;
+  border-top: 2px solid var(--accent-papaya);
+}
+
+footer p {
+  color: var(--white) !important;
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--glass-border);
+  padding: 4rem;
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-papaya);
+}
+
+/* Buttons */
+.btn-minimal {
+  font-family: var(--font-heading);
+  padding: 1.5rem 4rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: var(--transition);
+  letter-spacing: 0.2em;
+}
+
+.btn-minimal:hover {
+  background: var(--accent-papaya);
+  border-color: var(--accent-papaya);
+  color: var(--white);
+}
+
+/* Inputs */
+.minimal-input {
+  font-family: var(--font-body);
+  width: 100%;
+  padding: 2rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+  font-size: 1.5rem;
+}
+
+.minimal-input:focus {
+  border-color: var(--accent-papaya);
+}
+
+/* Utility: Hide Scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Three.js Canvas */
+.three-canvas-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
