@@ -1,10 +1,12 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { usePortfolio } from '../context/PortfolioContext';
 import avatar from '../assets/avatar.png';
+import CVModal from '../components/CVModal';
 
 export default function Hero() {
     const { data } = usePortfolio();
+    const [isCVOpen, setIsCVOpen] = useState(false);
     const name = data?.name || 'Your Name';
     const title = data?.title || 'Full Stack Developer';
 
@@ -16,7 +18,10 @@ export default function Hero() {
     const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
 
     return (
-        <section className="merge-section" style={{ overflow: 'hidden' }}>
+        <section className="merge-section" style={{
+            overflow: 'hidden',
+            background: 'var(--bg-primary)'
+        }}>
             <div className="flashy-glow" style={{ top: '-10%', left: '-10%', background: 'var(--accent-papaya)', opacity: 0.08 }} />
 
             <motion.div
@@ -25,10 +30,11 @@ export default function Hero() {
                     opacity,
                     scale,
                     textAlign: 'center',
-                    maxWidth: '1400px',
+                    maxWidth: '100%',
                     width: '100%',
                     position: 'relative',
-                    zIndex: 2
+                    zIndex: 2,
+                    padding: '0 5%'
                 }}
             >
                 {/* Formal Avatar */}
@@ -72,15 +78,16 @@ export default function Hero() {
                     style={{
                         margin: 0,
                         width: '100%',
-                        fontWeight: 500,
-                        fontSize: 'clamp(4rem, 15vw, 15rem)', // Adjusted size slightly
-                        letterSpacing: '-0.04em',
+                        fontWeight: 900,
+                        fontSize: 'clamp(5rem, 20vw, 18rem)',
+                        letterSpacing: '-0.06em',
                         color: 'var(--white)',
-                        lineHeight: 0.8
+                        lineHeight: 0.8,
+                        textTransform: 'uppercase'
                     }}
                 >
-                    <span className="bg-black" style={{ padding: '0 30px', display: 'inline-block' }}>{name.split(' ')[0]}</span><br />
-                    <span style={{ fontStyle: 'italic', marginLeft: '10%', color: 'var(--accent-papaya)' }}>{name.split(' ')[1] || ''}</span>
+                    <span className="bg-black" style={{ padding: '0 100px', display: 'inline-block' }}>{name.split(' ')[0]}</span><br />
+                    <span style={{ fontStyle: 'italic', marginLeft: '15%', color: 'var(--accent-papaya)', textShadow: '0 0 40px rgba(255, 63, 33, 0.4)' }}>{name.split(' ')[1] || ''}</span>
                 </motion.h1>
 
                 <motion.div
@@ -111,6 +118,13 @@ export default function Hero() {
                         <a href="#projects" className="btn-minimal btn-filled" style={{ background: 'var(--accent-papaya)', borderColor: 'var(--accent-papaya)' }}>
                             Explore Work
                         </a>
+                        <button
+                            onClick={() => setIsCVOpen(true)}
+                            className="btn-minimal"
+                            style={{ background: 'transparent', cursor: 'pointer' }}
+                        >
+                            View CV
+                        </button>
                         <a href="#contact" className="btn-minimal">
                             Talk To Me
                         </a>
@@ -151,6 +165,16 @@ export default function Hero() {
                     />
                 </div>
             </motion.div>
+            {/* CV Modal */}
+            <AnimatePresence>
+                {isCVOpen && (
+                    <CVModal
+                        isOpen={isCVOpen}
+                        onClose={() => setIsCVOpen(false)}
+                        cvImage={data?.cvImage}
+                    />
+                )}
+            </AnimatePresence>
         </section>
     );
 }

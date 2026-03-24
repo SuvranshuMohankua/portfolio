@@ -17,8 +17,7 @@ import Projects from './sections/Projects';
 import Certificates from './sections/Certificates';
 import Contact from './sections/Contact';
 
-import Login from './admin/Login';
-import Dashboard from './admin/Dashboard';
+
 
 function ThreeScene() {
     return (
@@ -128,29 +127,13 @@ function PortfolioPage() {
     );
 }
 
-function AdminPage() {
-    const [authenticated, setAuthenticated] = useState(
-        localStorage.getItem('portfolioAdmin') === 'true'
-    );
 
-    const handleLogout = () => {
-        localStorage.removeItem('portfolioAdmin');
-        setAuthenticated(false);
-    };
-
-    if (!authenticated) {
-        return <Login onLogin={() => setAuthenticated(true)} />;
-    }
-
-    return <Dashboard onLogout={handleLogout} />;
-}
 
 export default function App() {
     return (
         <PortfolioProvider>
             <Routes>
                 <Route path="/" element={<PortfolioPage />} />
-                <Route path="/admin" element={<AdminPage />} />
             </Routes>
         </PortfolioProvider>
     );

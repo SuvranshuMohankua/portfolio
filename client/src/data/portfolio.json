@@ -1,6 +1,10 @@
 {
     "name": "Suvranshu Mohankuda",
     "title": "Full Stack Developer",
+    "cvImage": [
+        "/images/cv_page_1.jpg",
+        "/images/cv_page_2.jpg"
+    ],
     "summary": "Passionate Full-Stack Developer currently pursuing B.Tech in CSE at Lovely Professional University. Experienced in MERN stack development, C++, and building energy-efficient scheduling models.",
     "profileImage": "",
     "skills": [

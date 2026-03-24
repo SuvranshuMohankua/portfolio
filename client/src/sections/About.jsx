@@ -52,6 +52,25 @@ export default function About() {
                         <span key={i} style={{ color: i % 10 === 0 ? 'var(--accent-papaya)' : 'inherit' }}>{word} </span>
                     ))}
                 </p>
+                {data?.cvUrl && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        style={{ marginTop: '40px' }}
+                    >
+                        <a
+                            href={data.cvUrl.startsWith('http') ? data.cvUrl : `http://localhost:5000${data.cvUrl}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-minimal btn-filled"
+                            style={{ background: 'var(--accent-papaya)', borderColor: 'var(--accent-papaya)', fontSize: '0.8rem' }}
+                            download
+                        >
+                            Download Full Resume
+                        </a>
+                    </motion.div>
+                )}
             </motion.div>
 
             {/* Education & Experience Grid */}

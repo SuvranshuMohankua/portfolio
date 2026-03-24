@@ -3,9 +3,13 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  
+  base: "./",   // ✅ ADD THIS LINE (VERY IMPORTANT)
+
   optimizeDeps: {
     include: ['stats.js', 'prop-types']
   },
+
   server: {
     port: 5173,
     proxy: {

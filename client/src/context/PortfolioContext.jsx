@@ -1,25 +1,16 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import api from '../api';
+import portfolioData from '../data/portfolio.json';
 
 const PortfolioContext = createContext(null);
 
 export function PortfolioProvider({ children }) {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState(portfolioData);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const fetchData = async () => {
-        try {
-            setLoading(true);
-            const result = await api.getPortfolio();
-            setData(result);
-            setError(null);
-        } catch (err) {
-            console.error('Failed to fetch portfolio data:', err);
-            setError('Failed to load portfolio data');
-        } finally {
-            setLoading(false);
-        }
+        // No fetch needed for static data
+        setLoading(false);
     };
 
     useEffect(() => {

@@ -19,15 +19,11 @@ export default function Contact() {
             return;
         }
 
-        setSending(true);
-        try {
-            await api.sendContact(form);
-            setStatus({ type: 'success', message: 'Message sent successfully! ✨' });
-            setForm({ name: '', email: '', message: '' });
-        } catch (err) {
-            setStatus({ type: 'error', message: 'Failed to send message. Try again.' });
-        }
-        setSending(false);
+        const subject = encodeURIComponent(`Contact from Portfolio: ${form.name}`);
+        const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
+        window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+
+        setStatus({ type: 'success', message: 'Redirecting to your email client... ✨' });
     };
 
     const contactLinks = [

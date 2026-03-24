@@ -77,43 +77,117 @@ export default function Skills() {
                 </Canvas>
             </motion.div>
 
-            {/* Skills List */}
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '20px',
-                    justifyContent: 'center',
-                    maxWidth: '1200px',
-                    marginTop: '60px',
-                }}
-            >
-                {skills.map((skill, i) => (
-                    <motion.span
-                        key={i}
-                        whileHover={{ y: -10, scale: 1.1, background: 'var(--accent-papaya)', color: 'var(--black)' }}
-                        style={{
-                            fontFamily: 'var(--font-heading)',
-                            fontSize: '1.5rem',
-                            fontWeight: 500,
-                            padding: '15px 40px',
-                            background: 'var(--black)',
-                            border: '1px solid var(--border)',
-                            color: 'var(--accent-papaya)',
-                            textTransform: 'lowercase',
-                            letterSpacing: '0.05em',
-                            transition: 'var(--transition)',
-                            cursor: 'default',
-                        }}
-                    >
-                        {skill}
-                    </motion.span>
-                ))}
-            </motion.div>
+            {/* Continuous Marquee for Skills */}
+            <div style={{
+                position: 'relative',
+                width: '100%',
+                marginTop: '100px',
+                overflow: 'hidden',
+                padding: '40px 0'
+            }}>
+                <motion.div
+                    animate={{
+                        x: [0, -1500]
+                    }}
+                    transition={{
+                        duration: 35,
+                        repeat: Infinity,
+                        ease: "linear",
+                    }}
+                    style={{
+                        display: 'flex',
+                        width: 'fit-content',
+                    }}
+                >
+                    {[...skills, ...skills, ...skills].map((skill, i) => (
+                        <motion.div
+                            key={i}
+                            whileHover={{ y: -10, borderColor: 'var(--accent-papaya)' }}
+                            style={{
+                                flex: '0 0 300px',
+                                height: '200px',
+                                margin: '0 30px',
+                                padding: '2rem',
+                                background: 'var(--black)',
+                                border: '1px solid var(--border)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                position: 'relative',
+                                cursor: 'default',
+                                transition: 'border-color 0.3s'
+                            }}
+                        >
+                            <div style={{
+                                width: '60px',
+                                height: '60px',
+                                marginBottom: '1.5rem',
+                                background: 'rgba(255, 63, 33, 0.05)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                borderRadius: '50%',
+                                fontSize: '2rem'
+                            }}>
+                                🛠️
+                            </div>
+                            <span style={{
+                                fontFamily: 'var(--font-heading)',
+                                fontSize: '2rem',
+                                color: 'var(--accent-papaya)',
+                                textAlign: 'center'
+                            }}>{skill}</span>
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '15px',
+                                right: '15px',
+                                fontSize: '0.6rem',
+                                color: 'var(--text-secondary)',
+                                opacity: 0.3,
+                                letterSpacing: '0.2em'
+                            }}>
+                                STACK // {i % 10}
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                {/* Gradient Overlays for smooth edges */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '200px',
+                    height: '100%',
+                    background: 'linear-gradient(to right, var(--bg-primary), transparent)',
+                    zIndex: 2,
+                    pointerEvents: 'none'
+                }} />
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: '200px',
+                    height: '100%',
+                    background: 'linear-gradient(to left, var(--bg-primary), transparent)',
+                    zIndex: 2,
+                    pointerEvents: 'none'
+                }} />
+            </div>
+
+            <div style={{
+                textAlign: 'center',
+                marginTop: '40px',
+                color: 'var(--text-secondary)',
+                fontSize: '0.8rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.3em',
+                fontFamily: 'var(--font-body)',
+                opacity: 0.4
+            }}>
+                ⟨ technical skill orbit & stack flow ⟩
+            </div>
         </section >
     );
 }

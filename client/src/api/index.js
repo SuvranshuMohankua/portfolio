@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 
 const api = {
     // Get portfolio data
@@ -9,14 +9,6 @@ const api = {
     // Update portfolio data
     updatePortfolio: (data) => axios.put(`${API_BASE}/portfolio-data`, data).then(r => r.data),
 
-    // Upload CV
-    uploadCV: (file) => {
-        const formData = new FormData();
-        formData.append('cv', file);
-        return axios.post(`${API_BASE}/upload-cv`, formData, {
-            headers: { 'Content-Type': 'multipart/form-data' }
-        }).then(r => r.data);
-    },
 
     // Upload image
     uploadImage: (file, type, extra = {}) => {

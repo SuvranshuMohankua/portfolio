@@ -25,19 +25,6 @@ export default function Dashboard({ onLogout }) {
         setLoading(false);
     };
 
-    const handleCVUpload = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        setStatus('Parsing CV...');
-        try {
-            const result = await api.uploadCV(file);
-            setData(result.data);
-            setStatus('✅ CV parsed successfully!');
-        } catch (err) {
-            setStatus('❌ Failed to parse CV');
-        }
-    };
-
     const handleImageUpload = async (e, type, extra = {}) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -216,13 +203,6 @@ export default function Dashboard({ onLogout }) {
                 {activeTab === 'uploads' && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
                         <div>
-                            <h3 style={{ fontFamily: 'Orbitron', fontSize: '1rem', color: '#00f0ff', marginBottom: '16px' }}>📄 Upload CV (PDF)</h3>
-                            <p style={{ color: '#7777aa', fontSize: '0.9rem', marginBottom: '12px' }}>Upload your CV/Resume PDF. The system will automatically extract your data.</p>
-                            <input type="file" accept=".pdf" onChange={handleCVUpload}
-                                style={{ fontFamily: 'Rajdhani', color: '#e0e0ff' }} />
-                        </div>
-                        <hr style={{ border: 'none', borderTop: '1px solid rgba(0,240,255,0.1)' }} />
-                        <div>
                             <h3 style={{ fontFamily: 'Orbitron', fontSize: '1rem', color: '#8b5cf6', marginBottom: '16px' }}>🖼️ Profile Image</h3>
                             <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, 'profile')}
                                 style={{ fontFamily: 'Rajdhani', color: '#e0e0ff' }} />
@@ -243,6 +223,15 @@ export default function Dashboard({ onLogout }) {
                                     handleImageUpload(e, 'certificate', { title });
                                 }} style={{ fontFamily: 'Rajdhani', color: '#e0e0ff' }} />
                             </div>
+                        </div>
+                        <hr style={{ border: 'none', borderTop: '1px solid rgba(0,240,255,0.1)' }} />
+                        <div>
+                            <h3 style={{ fontFamily: 'Orbitron', fontSize: '1rem', color: '#00ccff', marginBottom: '16px' }}>📄 CV Image (JPG)</h3>
+                            <input type="file" accept="image/*" onChange={(e) => handleImageUpload(e, 'cv')}
+                                style={{ fontFamily: 'Rajdhani', color: '#e0e0ff' }} />
+                            {data?.cvImage && (
+                                <img src={data.cvImage} alt="CV" style={{ width: 80, height: 110, marginTop: '12px', border: '2px solid rgba(0,240,255,0.3)', objectFit: 'cover' }} />
+                            )}
                         </div>
                     </div>
                 )}
@@ -366,17 +355,19 @@ export default function Dashboard({ onLogout }) {
             </div>
 
             {/* Save Button */}
-            {(activeTab === 'edit' || activeTab === 'projects') && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    style={{ marginTop: '24px', textAlign: 'center' }}
-                >
-                    <button onClick={handleSave} className="btn-neon btn-filled" style={{ padding: '14px 48px' }}>
-                        💾 Save Changes
-                    </button>
-                </motion.div>
-            )}
-        </div>
+            {
+                (activeTab === 'edit' || activeTab === 'projects') && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        style={{ marginTop: '24px', textAlign: 'center' }}
+                    >
+                        <button onClick={handleSave} className="btn-neon btn-filled" style={{ padding: '14px 48px' }}>
+                            💾 Save Changes
+                        </button>
+                    </motion.div>
+                )
+            }
+        </div >
     );
 }
